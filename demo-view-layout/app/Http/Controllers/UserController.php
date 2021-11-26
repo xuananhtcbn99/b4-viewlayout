@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -23,5 +24,11 @@ class UserController extends Controller
             $users = $this->userRepository->getAll();
             return view('backend.user.list', compact('users'));
         }else return redirect()->route('admin.login');
+    }
+
+    public function showAllPost($id)
+    {
+        $posts= $this->userRepository->getPostsById($id);
+        dd($posts);
     }
 }

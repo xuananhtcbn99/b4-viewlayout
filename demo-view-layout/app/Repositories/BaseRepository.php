@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 
 class BaseRepository
@@ -19,6 +20,14 @@ class BaseRepository
 
     public function getById($id)
     {
-        return $this->models->findOrFail($id);
+//        dd($this->models->find($id));
+        return $this->models->find($id);
+//        return $this->models->findOrFail($id);
+    }
+
+    public function getAllCategory()
+    {
+        $categories = Category::all();
+        return $categories;
     }
 }
